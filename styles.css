@@ -1,0 +1,161 @@
+/* ---- Site container & cards ---- */
+:root {
+  --content-max: 920px;
+  --card-max: 820px;
+  --gap: 12px;
+  --muted-border: rgba(0,0,0,0.04);
+  --card-shadow: 0 1px 6px rgba(0,0,0,0.04);
+}
+
+* { box-sizing: border-box; }
+
+.container {
+  max-width: var(--content-max);
+  margin: 0 auto;
+  padding: 0 12px;
+}
+
+/* card used for main page blocks */
+.card {
+  max-width: var(--card-max);
+  margin: 18px auto;
+  padding: 18px;
+  background: #fff;
+  border-radius: 8px;
+  border: 1px solid var(--muted-border);
+  box-shadow: var(--card-shadow);
+}
+
+/* ---- Topbar ---- */
+.topbar {
+  display: flex;
+  align-items: center;
+  gap: var(--gap);
+  padding: 10px 0;
+}
+.topbar .left  { display:flex; gap:10px; align-items:center; }
+.topbar .right { margin-left: auto; display:flex; gap:12px; align-items:center; }
+.topbar .greeting { font-weight:600; margin-left:6px; }
+
+/* ---- Headings / Report button inline ---- */
+.card h2 {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  font-size: 1.6rem;
+  margin: 0 0 12px 0;
+}
+.card h3 { margin: 12px 0 8px 0; }
+
+/* small inline buttons used throughout */
+.small-btn, .btn, button, .report-new-btn, .report-btn {
+  display: inline-block;
+  margin-right: 8px;
+  padding: 6px 10px;
+  border-radius: 6px;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* ---- Filter row (inline controls) ---- */
+.card .filter-row {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  flex-wrap: wrap;
+  margin: 10px 0 18px 0;
+}
+.card .filter-row .options  { display:flex; gap:12px; align-items:center; }
+.card .filter-row .controls { display:flex; gap:12px; align-items:center; }
+.card .filter-row label { margin:0; display:inline-flex; align-items:center; gap:8px; font-weight:600; }
+
+/* ---- Item & message cards ---- */
+.item,
+.message-list .message,
+.admin-list .admin-item {
+  margin: 14px 0;
+  padding: 14px;
+  border-radius: 8px;
+  border: 1px solid var(--muted-border);
+  background: #fff;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.03);
+}
+
+/* admin list has slightly different padding */
+.admin-list .admin-item { padding: 12px; margin-bottom: 18px; border-radius: 6px; }
+
+/* ---- Forms / inputs ---- */
+/* Generic form row: label + control inline on wide screens, stacked on small */
+.form-row,
+.card form .form-row {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 8px;
+}
+
+/* Labels align and reserve space for desktop */
+.card form label {
+  display: inline-block;
+  min-width: 110px;
+  font-weight: 600;
+  vertical-align: middle;
+}
+
+/* Inputs / selects / textarea */
+.card form input[type="text"],
+.card form input[type="email"],
+.card form input[type="password"],
+.card form select,
+.card form textarea {
+  padding: 6px 8px;
+  border: 1px solid #d6d9de;
+  border-radius: 4px;
+  width: 320px;       /* default desktop width */
+  max-width: 100%;
+  box-sizing: border-box;
+  vertical-align: middle;
+}
+
+/* textareas taller */
+.card form textarea { min-height: 90px; }
+
+/* keep buttons aligned with inputs */
+.card form button, .card form .small-btn { margin-left: 6px; }
+
+/* ---- Reply link spacing ---- */
+.reply-container { margin-top: 6px; margin-bottom: 18px; }
+.reply-link { display: inline-block; margin-top: 4px; }
+.message-list { margin-bottom: 20px; }
+
+/* ---- Utility tweaks ---- */
+.report-new-btn { font-weight:700; color: #4a0b7d; } /* subtle accent for report CTA */
+
+/* ---- Responsive adjustments ---- */
+@media (max-width: 720px) {
+  .card { padding: 14px; }
+  .card h2 { font-size: 1.4rem; }
+  .topbar { padding: 8px 0; }
+
+  /* stack form rows */
+  .form-row,
+  .card form .form-row { flex-direction: column; align-items: stretch; }
+  .card form label { min-width: 0; width: 100%; }
+  .card form input[type="text"],
+  .card form input[type="email"],
+  .card form input[type="password"],
+  .card form select,
+  .card form textarea { width: 100%; max-width: 100%; }
+
+  /* tighten gaps for small screens */
+  .container { padding: 0 10px; }
+  .topbar .left, .topbar .right { gap: 8px; }
+}
+
+/* small-screen fallback for very small devices */
+@media (max-width: 420px) {
+  .card h2 { font-size: 1.2rem; }
+  .small-btn, .btn, button { padding: 6px 8px; }
+}
